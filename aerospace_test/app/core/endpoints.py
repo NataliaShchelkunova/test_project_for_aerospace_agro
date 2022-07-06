@@ -83,6 +83,7 @@ async def pull_images(geojson_id, sentinel_request: SentinelRequest):
                 await r.expire(f'{geojson_id}_image', int(geojson_hours_alive) * 60 * 60)
             png_data.close()
             array_bytes = save_to_Redis(array)
+            result = check_array(array_bytes)
             rset = await r.set(f'{geojson_id}_array', bytes(array_bytes))
             if rset:
                 await r.expire(f'{geojson_id}_array', int(geojson_hours_alive) * 60 * 60)
