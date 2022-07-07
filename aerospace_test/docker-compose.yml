@@ -1,8 +1,18 @@
 version: "3"
 services:
-  test_app:
-    container_name: test_app
-    build: 
-      dockerfile: ./Dockerfile
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    environment:
+      REDIS_REPLICATION_MODE: master
     ports:
-      - "8000:5000"
+     - "6379:6379"
+
+  test_app:
+    platform: linux/x86_64
+    container_name: test_app
+    build: ./
+    ports:
+      - "8000:8000"
+    depends_on:
+     - redis
