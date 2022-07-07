@@ -21,7 +21,7 @@ from .utils import (
 )
 
 
-r = aioredis.Redis(host='redis', port=6379, decode_responses=True)
+r = aioredis.Redis(host='redis', port=6379)
 router = APIRouter()
 
 token_length = os.getenv('TOKEN_BYTES_LENGTH', 6)
