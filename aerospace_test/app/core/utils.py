@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from .work_with_files import get_picture
 from fastapi import HTTPException, responses
 
-r = aioredis.Redis()
+r = aioredis.Redis(host='redis', port=6379, decode_responses=True)
 
 
 class SentinelRequest(BaseModel):
