@@ -28,3 +28,4 @@ if cant't install rasterio: pip install https://github.com/rasterio/rasterio/arc
 
 CMD uvicorn main:app or uvicorn main:app --reload   
 
+http://54.211.139.197:8000
