@@ -16,18 +16,18 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": []
+							"src": "/Users/nataliashchelkunova/Downloads/taganrog.geojson"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/upload_geojson/",
+					"raw": "http://54.211.139.197:8000/upload_geojson/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"211",
+						"139",
+						"197"
 					],
 					"port": "8000",
 					"path": [
@@ -44,13 +44,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/delete_geojson/{ENTER_YOUR_TOKEN}",
+					"raw": "http://54.211.139.197:8000/delete_geojson/{ENTER_YOUR_TOKEN}",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"211",
+						"139",
+						"197"
 					],
 					"port": "8000",
 					"path": [
@@ -76,18 +76,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/pull_satellite_images/Sn45CVr-u1w",
+					"raw": "http://54.211.139.197:8000/pull_satellite_images/_fnNJJIG",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"211",
+						"139",
+						"197"
 					],
 					"port": "8000",
 					"path": [
 						"pull_satellite_images",
-						"Sn45CVr-u1w"
+						"_fnNJJIG"
 					]
 				}
 			},
@@ -108,18 +108,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/calculate_ndvi/WNqnMlxQ648",
+					"raw": "http://54.211.139.197:8000/calculate_ndvi/_fnNJJIG",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"211",
+						"139",
+						"197"
 					],
 					"port": "8000",
 					"path": [
 						"calculate_ndvi",
-						"WNqnMlxQ648"
+						"_fnNJJIG"
 					]
 				}
 			},
@@ -140,18 +140,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/tif_ndvi/W8BJhnMVHMw",
+					"raw": "http://54.211.139.197:8000/pull_data/_fnNJJIG",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"211",
+						"139",
+						"197"
 					],
 					"port": "8000",
 					"path": [
-						"tif_ndvi",
-						"W8BJhnMVHMw"
+						"pull_data",
+						"_fnNJJIG"
 					]
 				}
 			},
@@ -172,18 +172,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/png_ndvi/Sn45CVr-u1w",
+					"raw": "http://54.211.139.197:8000/im_ndvi/Z_G9KeNr",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"211",
+						"139",
+						"197"
 					],
 					"port": "8000",
 					"path": [
-						"png_ndvi",
-						"Sn45CVr-u1w"
+						"im_ndvi",
+						"Z_G9KeNr"
 					]
 				}
 			},
