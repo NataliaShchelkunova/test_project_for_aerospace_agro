@@ -1,10 +1,9 @@
 import mimetypes
-
 import aioredis
 import numpy as np
+
 from fastapi import HTTPException, responses
 from pydantic import BaseModel
-
 from .work_with_files import get_picture
 
 r = aioredis.Redis(host='redis', port=6379, decode_responses=True)
