@@ -1,11 +1,13 @@
-import aioredis
 import mimetypes
-import numpy as np
-from pydantic import BaseModel
-from .work_with_files import get_picture
-from fastapi import HTTPException, responses
 
-r = aioredis.Redis()
+import aioredis
+import numpy as np
+from fastapi import HTTPException, responses
+from pydantic import BaseModel
+
+from .work_with_files import get_picture
+
+r = aioredis.Redis(host='redis', port=6379, decode_responses=True)
 
 
 class SentinelRequest(BaseModel):
@@ -25,6 +27,11 @@ async def check_geojson(geojson_id):
                                         'invalid token')
 
 
+async def check_zip(geojson_id):
+    zip_bytes = await r.get(f'{geojson_id}_zip')
+    return zip_bytes
+
+
 async def check_path(geojson_id):
     paths = await r.get(f'{geojson_id}_paths')
     if paths:
@@ -33,14 +40,14 @@ async def check_path(geojson_id):
 
 
 async def check_array(geojson_id):
-    array = await r.get(f'{geojson_id}_paths')
+    array = await r.get(f'{geojson_id}_array')
     if array:
         return array
     return None
 
 
 async def check_png(geojson_id):
-    image_png = await r.get(f'{geojson_id}_paths')
+    image_png = await r.get(f'{geojson_id}_image')
     if image_png:
         return image_png
     return None
@@ -73,4 +80,3 @@ def convert_array_fromRedis(serialized_arr: str) -> np.array:
     arr = np.frombuffer(arr_str, dtype=arr_dtype).reshape(arr_shape)
 
     return arr
-

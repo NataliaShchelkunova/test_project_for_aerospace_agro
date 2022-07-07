@@ -1,14 +1,13 @@
 import os.path
-import rasterio
 from copy import copy
+
+import geojson as gj
 import numpy
+import rasterio
 from matplotlib import image
 from matplotlib.colors import ListedColormap
 from osgeo import gdal
-import geojson as gj
-from sentinelsat import (SentinelAPI,
-                         geojson_to_wkt,
-                         products)
+from sentinelsat import SentinelAPI, geojson_to_wkt, products
 
 
 def validate_path(result: list):

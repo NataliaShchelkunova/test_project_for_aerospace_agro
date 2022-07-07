@@ -1,9 +1,9 @@
 import os
+
+from core import endpoints
 from core.config import settings
 from fastapi import FastAPI
-from core import endpoints
 from fastapi.middleware.cors import CORSMiddleware
-
 
 token_length = os.getenv('TOKEN_BYTES_LENGTH', 8)
 geojson_hours_alive = os.getenv('GEOJSON_HOURS_ALIVE', 24)

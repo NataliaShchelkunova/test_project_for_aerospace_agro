@@ -1,13 +1,16 @@
-import os
 import io
+import os
 import zipfile
-from tools.calculation_ndva import (pull_geojson_for_images_,
-                             clip_tif,
-                             get_array,
-                             get_tif,
-                             get_png_image)
-from fastapi import HTTPException
+
 import numpy as np
+from fastapi import HTTPException
+from tools.calculation_ndva import (
+    clip_tif,
+    get_array,
+    get_png_image,
+    get_tif,
+    pull_geojson_for_images_,
+)
 
 
 def delete_files(*args):
@@ -21,10 +24,10 @@ def make_sat_request(geojson, sentinel_request):
     except AttributeError:
         pass
     sat_response = pull_geojson_for_images_(geojson,
-                                   sentinel_request.username,
-                                   sentinel_request.password,
-                                   sentinel_request.cloud_cover,
-                                   sentinel_request.days_offset)
+                                            sentinel_request.username,
+                                            sentinel_request.password,
+                                            sentinel_request.cloud_cover,
+                                            sentinel_request.days_offset)
 
     if sat_response:
         sat_b04_path, sat_b08_path = sat_response
@@ -68,6 +71,7 @@ def prepare_array(geojson, sentinel_request, token):
     else:
         raise HTTPException(500)
 
+
 def prepare_array_from_paths(b04_path, b08_path):
     array_meta = get_array(b04_path, b08_path)
     if array_meta is not False:
@@ -85,6 +89,7 @@ def calculate_ndvi_values(geojson, sentinel_request, token):
         "min": np.nanmin(array)
     }
 
+
 def calculate_ndvi_values_from_paths(b04_path, b08_path):
     array, meta = prepare_array_from_paths(b04_path, b08_path)
     return {
@@ -94,6 +99,7 @@ def calculate_ndvi_values_from_paths(b04_path, b08_path):
         "min": np.nanmin(array)
     }
 
+
 def calculate_ndvi_values_when_has_convert_array(conv_array):
     return {
         "max": np.nanmax(conv_array),
@@ -101,6 +107,7 @@ def calculate_ndvi_values_when_has_convert_array(conv_array):
         "median": np.nanmedian(conv_array),
         "min": np.nanmin(conv_array)
     }
+
 
 def get_picture(geojson, sentiel_request, token, tif):
     array, meta = prepare_array(geojson, sentiel_request, token)
