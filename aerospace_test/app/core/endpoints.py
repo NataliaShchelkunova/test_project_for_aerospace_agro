@@ -20,6 +20,7 @@ from .utils import (
     save_to_Redis,
 )
 
+
 r = aioredis.Redis(host='redis', port=6379, decode_responses=True)
 router = APIRouter()
 
