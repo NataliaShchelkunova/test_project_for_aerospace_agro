@@ -31,7 +31,7 @@ from .utils import (SentinelRequest,
                     )
 
 
-r = aioredis.Redis()
+r = aioredis.Redis(host='redis', port=6379, decode_responses=True)
 router = APIRouter()
 token_length = os.getenv('TOKEN_BYTES_LENGTH', 8)
 geojson_hours_alive = os.getenv('GEOJSON_HOURS_ALIVE', 24)
